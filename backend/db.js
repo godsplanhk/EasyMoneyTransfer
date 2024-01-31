@@ -1,8 +1,7 @@
-import { MONGO_URI } from "./config";
-
 export const mongoose = require("mongoose");
-
-mongoose.connect(MONGO_URI).then(()=>console.log("Database Connected"));
+const dotenv = require("dotenv");
+dotenv.config();
+mongoose.connect(process.env.MONGO_URI).then(()=>console.log("Database Connected"));
 
 const UserSchema = mongoose.Schema({
     username: {
