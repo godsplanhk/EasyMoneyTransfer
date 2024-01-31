@@ -1,6 +1,8 @@
+import { MONGO_URI } from "./config";
+
 export const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://godsplanhk:zlQs8chckb8OPFtY@cluster0.aoczz.mongodb.net/?retryWrites=true&w=majority").then(()=>console.log("Database Connected"));
+mongoose.connect(MONGO_URI).then(()=>console.log("Database Connected"));
 
 const UserSchema = mongoose.Schema({
     username: {
@@ -45,4 +47,4 @@ const AccountSchema = mongoose.Schema({
 
 });
 export const Account = mongoose.model("Accounts",AccountSchema);
-export const User = mongoose.model("PaytmUsers",UserSchema);
+export const User = mongoose.model("MTAUsers",UserSchema);
