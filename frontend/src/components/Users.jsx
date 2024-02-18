@@ -3,6 +3,8 @@ import { Button } from "./Button";
 import { Inputbox } from "./InputBox";
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
+const ADDRESS = process.env.ADDRESS;
+const PORT = process.env.PORT;
 export function Users(){
     const [users,setUsers]= useState([]);
     const [filter,setFilter] = useState("");
@@ -10,7 +12,7 @@ export function Users(){
     useEffect(()=>{
 
         console.log(localStorage.getItem("token"));
-        axios.get(`http://hk:3000/api/v1/user/bulk?filter=${filter}`,{
+        axios.get(`${ADDRESS}:${PORT}/api/v1/user/bulk?filter=${filter}`,{
             headers:{
                 "Authorization": "Bearer "+JSON.parse(localStorage.getItem("token"))
             }

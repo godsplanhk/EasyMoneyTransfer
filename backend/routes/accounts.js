@@ -2,7 +2,7 @@ const { Account, mongoose, User } = require("../db");
 const  { authMiddleware } =  require("../middlewares/authMiddleware");
 
 const express = require("express");
-const router = express.Router();
+export default router = express.Router();
 
 
 router.get("/balance",authMiddleware,async(req,res)=>{
@@ -41,5 +41,4 @@ router.post("/transfer",authMiddleware, async(req,res)=>{
     });
 });
 
-module.exports = router;
 

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom"
 import axios from "axios";
+const ADDRESS = process.env.ADDRESS;
+const PORT = process.env.PORT;
 export function SendMoney(){
     const [searchParams] = useSearchParams();
     const id = searchParams.get("id");
@@ -22,13 +24,13 @@ export function SendMoney(){
                     </div>
                     <div className="space-y-6">
                         <div className="space-y-3">
-                            <label className="text-sm font-medium leading-none peer-disabled:curson-not-allowed peer-disabled:opacity-70">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                                 Amount (in Rs)
                             </label>
                             <input onChange={(e)=>{setAmount(e.target.value)}} type="number" className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm" id='amount' placeholder="Enter amount"></input>
                         </div>
                         <button onClick={()=>{
-                            axios.post("http://hk:3000/api/v1/account/transfer",{
+                            axios.post(`${ADDRESS}:${PORT}/api/v1/account/transfer`,{
                                 "to":id,
                                 "amount":amount
                             },{
