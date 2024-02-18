@@ -1,4 +1,4 @@
-export const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 mongoose.connect(process.env.MONGO_URI).then(()=>console.log("Database Connected"));
@@ -45,5 +45,6 @@ const AccountSchema = mongoose.Schema({
     }
 
 });
-export const Account = mongoose.model("Accounts",AccountSchema);
-export const User = mongoose.model("MTAUsers",UserSchema);
+const Account = mongoose.model("Accounts",AccountSchema);
+const User = mongoose.model("MTAUsers",UserSchema);
+module.exports = {mongoose,Account,User}
